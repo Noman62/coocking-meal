@@ -2,6 +2,7 @@ document.getElementById('searchBtn').addEventListener("click", function () {
 
     const mealList = document.getElementById('mealList');
     let getInputText = document.getElementById('getInput').value;
+    //Search meal by name
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${getInputText}`)
         .then(res => res.json())
         .then(data => {
@@ -36,14 +37,14 @@ document.getElementById('searchBtn').addEventListener("click", function () {
     document.getElementById('getInput').value = "";
 })
 
-//get recipe of the meal
+//Search meal by Id
 const displayDetails = id => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(res => res.json())
         .then(data => detailsPerMeal(data.meals[0]));
 }
 
-// create a modal
+// Ingredient of single meal
 const detailsPerMeal = item => {
     const mealDiv = document.getElementById('IngredientOfMeal');
     mealDiv.innerHTML = `
